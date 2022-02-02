@@ -23,6 +23,9 @@ class MixpanelEvent
             foreach ($event->trackingData as $eventName => $data) {
                 app('mixpanel')->track($eventName, $data);
             }
+
+            // THIS FLUSH WAS ADDED AS SOME EVENTS WHERE NOT BEEING SENT.
+            app('mixpanel')->flush();
         }
     }
 

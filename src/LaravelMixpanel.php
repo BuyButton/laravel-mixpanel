@@ -18,10 +18,13 @@ class LaravelMixpanel extends Mixpanel
     public function __construct(Request $request, array $options = [])
     {
         $this->callbackResults = [];
+
+        // ADDED A FEW CONFIGURATIONS
         $this->defaults = [
-            'consumer' => config('services.mixpanel.consumer', 'socket'),
+            'consumer' => config('services.mixpanel.consumer'),
             'connect_timeout' => config('services.mixpanel.connect-timeout', 2),
             'timeout' => config('services.mixpanel.timeout', 2),
+            'max_queue_size' => config('services.mixpanel.max_queue_size'),
         ];
 
         if (config('services.mixpanel.host')) {
@@ -74,7 +77,7 @@ class LaravelMixpanel extends Mixpanel
             $data = (new $callbackClass)->process($data);
             $data = array_filter($data);
         }
-        
+
         parent::track($event, $data);
     }
 }

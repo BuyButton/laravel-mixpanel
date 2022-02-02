@@ -11,7 +11,8 @@ class LaravelMixpanelUserObserver
         }
     }
 
-    public function saving($user)
+    // Changed "saving" for "saved" as some problems were caused by using "saving"
+    public function saved($user)
     {
         if (config("services.mixpanel.enable-default-tracking")) {
             event(new Mixpanel($user, ['User: Updated' => []]));
