@@ -46,6 +46,13 @@ class MixpanelEvent
             '$last_name' => $lastName,
             '$name' => $user->name,
             '$email' => $user->email,
+
+            // CUSTOM TRACKING INFO USED BY BUYBUTTON
+            '$utm_source' => $user->tracking_info['utm_source'] ?? null,
+            '$utm_medium' => $user->tracking_info['utm_medium'] ?? null,
+            '$utm_campaign' => $user->tracking_info['utm_campaign'] ?? null,
+
+
             '$created' => ($user->created_at
                 ? (new Carbon())
                     ->parse($user->created_at)
