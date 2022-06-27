@@ -52,6 +52,7 @@ class MixpanelEvent
             '$utm_medium' => $user->tracking_info['utm_medium'] ?? null,
             '$utm_campaign' => $user->tracking_info['utm_campaign'] ?? null,
 
+            '$provider' => $user->provider,
 
             '$created' => ($user->created_at
                 ? (new Carbon())
