@@ -1,4 +1,6 @@
-<?php namespace GeneaLabs\LaravelMixpanel\Listeners;
+<?php
+
+namespace GeneaLabs\LaravelMixpanel\Listeners;
 
 use GeneaLabs\LaravelMixpanel\Events\MixpanelEvent as Event;
 use Illuminate\Support\Carbon;
@@ -29,7 +31,7 @@ class MixpanelEvent
         }
     }
 
-    private function getProfileData($user) : array
+    private function getProfileData($user): array
     {
         $firstName = $user->first_name;
         $lastName = $user->last_name;
@@ -53,11 +55,12 @@ class MixpanelEvent
             '$utm_campaign' => $user->tracking_info['utm_campaign'] ?? null,
 
             '$provider' => $user->provider,
+            '$registered_from' => $user->registered_from,
 
             '$created' => ($user->created_at
                 ? (new Carbon())
-                    ->parse($user->created_at)
-                    ->format('Y-m-d\Th:i:s')
+                ->parse($user->created_at)
+                ->format('Y-m-d\Th:i:s')
                 : null),
         ];
         array_filter($data);
