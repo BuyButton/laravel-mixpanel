@@ -15,7 +15,6 @@
     },
     "require": {
         "illuminate/auth": "^9.0",
-        "illuminate/config": "^9.0",
         "illuminate/console": "^9.0",
         "illuminate/http": "^9.0",
         "illuminate/queue": "^9.0",
